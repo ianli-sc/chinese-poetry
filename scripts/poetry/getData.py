@@ -144,7 +144,7 @@ def main():
 
     with open(f'./data/poetry/{poetry_type}.json', 'w', encoding='utf-8') as file:
         json.dump(results, file, ensure_ascii=False, indent=4)
-    with open(f'./data/poetry/{poetry_type}_authro.json', 'w', encoding='utf-8') as file:
+    with open(f'./data/poetry/{poetry_type}_author.json', 'w', encoding='utf-8') as file:
         json.dump(author_results, file, ensure_ascii=False, indent=4)
 
 if __name__ == '__main__':
