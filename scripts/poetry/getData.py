@@ -10,6 +10,13 @@ import json
 # 记录所有诗人的链接并等后续拉取
 all_author_link = {}
 
+def clearText(text):
+    """
+    去掉文章的杂乱字符
+    空格、全角空格、换行符、中文占位符
+    """
+    return text.strip().replace(" ", "").replace("\n", "").replace("", "").replace("　", "")
+
 def doRequest(base_url):
     """
     简单封装下请求
@@ -85,9 +92,9 @@ def scrape_text_from_url(url, type=None):
         'type': type,
         'title': title,
         'author': author,
-        'poem': poem,
-        'translate': translate,
-        'analysis': analysis
+        'poem': clearText(poem),
+        'translate': clearText(translate),
+        'analysis': clearText(analysis)
     }
 
 def get_author_details(author, author_link):
@@ -106,7 +113,7 @@ def get_author_details(author, author_link):
     print(f'Get author: {author} details')
     return {
         'author': author,
-        'author_info': author_info
+        'author_info': clearText(author_info)
     }
 
 def main():
@@ -127,8 +134,9 @@ def main():
     print(f'Done! get all poetry data!')
 
     author_results = []
+    print(f'Getting author ...')
+
     for author, author_links in all_author_link.items():
-        print(f'Getting author ...')
         data = get_author_details(author, author_links)
         author_results.append(data)
         time.sleep(0.5)
