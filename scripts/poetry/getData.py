@@ -142,9 +142,9 @@ def main():
         time.sleep(0.5)
     print(f'Done! get all author detail!')
 
-    with open(f'./data/poetry/{poetry_type}.json', 'w', encoding='utf-8') as file:
+    with open(f'./data/poetry/{poetry_type}-data.json', 'w', encoding='utf-8') as file:
         json.dump(results, file, ensure_ascii=False, indent=4)
-    with open(f'./data/poetry/{poetry_type}_author.json', 'w', encoding='utf-8') as file:
+    with open(f'./data/poetry/{poetry_type}-author.json', 'w', encoding='utf-8') as file:
         json.dump(author_results, file, ensure_ascii=False, indent=4)
 
 if __name__ == '__main__':
